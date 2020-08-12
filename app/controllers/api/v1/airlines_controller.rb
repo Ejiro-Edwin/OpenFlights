@@ -14,7 +14,7 @@ module Api
       def create
         airline = Airline.new(airline_params)
         if airline.save
-          render json: AirlineSerializer.new(airlines).serialized_json
+          render json: AirlineSerializer.new(airline).serialized_json
         else
           render json: {error:airline.errors.messages}, status:422
         end
@@ -23,7 +23,7 @@ module Api
       def update
         airline = Airline.find_by(slug: params[:slug])
         if airline.update(airline_params)
-          render json: AirlineSerializer.new(airlines).serialized_json
+          render json: AirlineSerializer.new(airline).serialized_json
         else
           render json: {error:airline.errors.messages}, status:422
         end
