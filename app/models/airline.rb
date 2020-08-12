@@ -1,10 +1,8 @@
 class Airline < ApplicationRecord
   has_many :reviews
   
-  before_create :slugify
-
-  def slugify 
-   self.slug = name.parameterize
+  before_create -> (airline) do
+    airline.slug = airline.name.parameterize
   end
 
   def avg_score
